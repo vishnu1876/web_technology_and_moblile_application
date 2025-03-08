@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        <label>First Name: <input type="text" id="firstName"></label><br>
+        <label>Last Name: <input type="text" id="lastName"></label><br>
+        <label>Password: <input type="password" id="password"></label><br>
+        <label>Email: <input type="email" id="email"></label><br>
+        <label>Mobile: <input type="text" id="mobile"></label><br>
+        <label>Address: <textarea id="address"></textarea></label><br>
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+    <div id="errorMessages" style="color: red;"></div>
+    <script>
+        function validateForm() {
+            let errors='';
+            if(!document.getElementById("firstName").value.match(/^[A-Za-z]{6,}$/)) errors+="First Name must be at least 6 chars and only alphabets. ";document.getElementById("errorMessages").innerHTML=errors;
+            if(!document.getElementById("lastName").value.trim()) errors+="Last Name is required. ";document.getElementById("errorMessages").innerHTML=errors;
+            if(document.getElementById("password").value.length<6) errors+="Password must be at least 6 characters. ";document.getElementById("errorMessages").innerHTML=errors;
+            if(!document.getElementById("email").value.match(/^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/)) errors+="Invalid email format. ";document.getElementById("errorMessages").innerHTML=errors;
+            if(!document.getElementById("mobile").value.match(/^\d{10}$/)) errors+="Mobile must be 10 digits. ";document.getElementById("errorMessages").innerHTML=errors;
+            if(!document.getElementById("address").value.trim()) errors+="Address is required. ";document.getElementById("errorMessages").innerHTML=errors;
+        }
+    </script>
+</body>
+</html>
